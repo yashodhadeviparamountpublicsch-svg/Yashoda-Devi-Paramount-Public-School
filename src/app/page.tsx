@@ -1,65 +1,183 @@
-import Image from "next/image";
+"use client"
+
+import { HeroSlider } from "@/components/home/HeroSlider"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { GraduationCap, Shield, Users, Music } from "lucide-react"
+import { StatsCounter } from "@/components/home/StatsCounter"
+import { NoticesPreview } from "@/components/home/NoticesPreview"
+import { FacultyPreview } from "@/components/home/FacultyPreview"
+import { GalleryPreview } from "@/components/home/GalleryPreview"
+import { PridePreview } from "@/components/home/PridePreview"
+import { CoachingPreview } from "@/components/home/CoachingPreview"
+import { motion } from "framer-motion"
+import { ScrollAnimation } from "@/components/common/ScrollAnimation"
+
+const highlights = [
+  { icon: GraduationCap, title: "Nursery to Class 10", desc: "Complete schooling with CBSE aligned curriculum aiming for holistic excellence." },
+  { icon: Shield, title: "Safe & Secure Campus", desc: "Prioritizing safety with 24/7 security, CCTV surveillance, and caring staff." },
+  { icon: Users, title: "Qualified Teachers", desc: "Experienced educators dedicated to nurturing every child's potential." },
+  { icon: Music, title: "Holistic Development", desc: "A balanced focus on academics, sports, arts, and cultural activities." },
+]
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex flex-col w-full">
+      <HeroSlider />
+
+      <ScrollAnimation>
+        <StatsCounter />
+      </ScrollAnimation>
+
+      {/* Highlights Section */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDelay: '1s' }} />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Why Choose Us</span>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-foreground mb-6">Nurturing Excellence</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              We provide a stimulating environment where every child is encouraged to explore, learn, and grow into confident individuals.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {highlights.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Card className="border-white/40 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden h-full">
+                  <CardContent className="p-8 flex flex-col items-center text-center relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="h-16 w-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center text-primary mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 relative z-10">
+                      <item.icon className="h-8 w-8" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 font-serif text-foreground relative z-10">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed relative z-10">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      <ScrollAnimation>
+        <CoachingPreview />
+      </ScrollAnimation>
+
+      <ScrollAnimation delay={0.2}>
+        <FacultyPreview />
+      </ScrollAnimation>
+
+      {/* Principal's Message */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 -z-10" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Image placeholder */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="w-full lg:w-1/2 relative"
+            >
+              <div className="aspect-[4/5] md:aspect-square lg:aspect-[4/5] glass p-2 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 relative z-10 max-w-md mx-auto">
+                <div className="w-full h-full rounded-2xl overflow-hidden bg-white">
+                  {/* Placeholder for Principal Image */}
+                  <img
+                    src="/images/director.jpg"
+                    alt="Director of Yashoda Devi Paramount Public School"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              {/* Decorative border */}
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-primary/20 rounded-3xl z-0 max-w-md hidden md:block left-1/2 -translate-x-1/2 lg:left-6 lg:translate-x-0" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="w-full lg:w-1/2 space-y-8 text-center lg:text-left"
+            >
+              <div>
+                <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Leadership</span>
+                <h2 className="text-3xl md:text-5xl font-bold font-serif text-foreground">Principal's Message</h2>
+              </div>
+              <blockquote className="text-xl md:text-2xl font-medium text-foreground/90 italic font-serif leading-relaxed border-l-4 border-primary pl-6 py-4 ml-4 lg:ml-0 glass rounded-r-xl pr-6 shadow-sm">
+                "Education is not just about filling a bucket, but lighting a fire. We strive to ignite the passion for learning in every student."
+              </blockquote>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                At Yashoda Devi Paramount Public School, we believe in fostering not just academic excellence but a strong moral compass. Our mission is to empower students to become compassionate, critical thinkers who contribute positively to society. We are committed to providing a safe and nurturing environment where every child feels valued.
+              </p>
+              <div className="pt-4">
+                <p className="font-bold text-2xl font-serif text-gradient-primary">ER Sumit Kumar Choudhary</p>
+                <p className="text-muted-foreground font-medium">Director, YDPPS</p>
+              </div>
+              <div className="pt-4">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white transition-colors" asChild>
+                  <Link href="/about">Read Full Message</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <ScrollAnimation>
+        <PridePreview />
+      </ScrollAnimation>
+
+      <ScrollAnimation delay={0.1}>
+        <NoticesPreview />
+      </ScrollAnimation>
+
+      <ScrollAnimation delay={0.1}>
+        <GalleryPreview />
+      </ScrollAnimation>
+
+      {/* Call to Action */}
+      <ScrollAnimation>
+        <section className="py-24 relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute inset-0 bg-primary/5 -z-10" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-[100px] -z-10 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-[100px] -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
+
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <h2 className="text-4xl md:text-6xl font-bold font-serif mb-6 text-gradient-primary drop-shadow-sm">Join Our Growing Family</h2>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+              Admissions are now open for the academic session 2026-27. Give your child the gift of quality education.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="text-lg px-10 h-16 rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-1 bg-gradient-primary text-white font-bold" asChild>
+                <Link href="/admissions">Apply for Admission</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-10 h-16 rounded-full border-primary/20 text-foreground hover:bg-primary/5 hover:border-primary/50 transition-all bg-white/50 backdrop-blur-sm" asChild>
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </ScrollAnimation>
     </div>
   );
 }
