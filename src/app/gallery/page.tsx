@@ -14,6 +14,14 @@ interface GalleryImage {
     title: string;
 }
 
+title: string;
+}
+
+export const metadata = {
+    title: "Gallery",
+    description: "View the latest photos and events from Yashoda Devi Paramount Public School. Explore our campus life and activities.",
+};
+
 export default function GalleryPage() {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [loading, setLoading] = useState(true);
