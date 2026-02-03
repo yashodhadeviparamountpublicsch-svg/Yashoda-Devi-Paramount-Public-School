@@ -17,6 +17,14 @@ interface Notice {
     fileName?: string;
 }
 
+fileName ?: string;
+}
+
+export const metadata = {
+    title: "Notices",
+    description: "Stay updated with the latest news, announcements, and circulars from Yashoda Devi Paramount Public School.",
+};
+
 export default function NoticesPage() {
     const [notices, setNotices] = useState<Notice[]>([]);
     const [loading, setLoading] = useState(true);
