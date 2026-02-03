@@ -16,6 +16,11 @@ interface FacultyMember {
     bio?: string;
 }
 
+export const metadata = {
+    title: "Our Faculty",
+    description: "Meet the dedicated and experienced faculty members of Yashoda Devi Paramount Public School who guide students towards excellence.",
+};
+
 export default function FacultyPage() {
     const [faculty, setFaculty] = useState<FacultyMember[]>([]);
     const [loading, setLoading] = useState(true);
