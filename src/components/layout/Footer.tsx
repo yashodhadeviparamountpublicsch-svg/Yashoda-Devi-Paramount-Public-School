@@ -8,12 +8,12 @@ export function Footer() {
     const { settings } = useSiteSettings()
 
     return (
-        <footer className="bg-white pt-16 pb-8 border-t border-red-100 relative overflow-hidden">
+        <footer className="bg-white pt-12 md:pt-16 pb-8 border-t border-red-100 relative overflow-hidden">
             {/* Decorative top gradient border */}
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-primary" />
             <div className="absolute inset-0 bg-mesh-orange opacity-30 pointer-events-none" />
 
-            <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 relative z-10">
                 {/* Brand */}
                 <div className="space-y-6">
                     <div className="flex flex-col gap-2">
