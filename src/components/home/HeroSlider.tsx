@@ -66,7 +66,7 @@ export function HeroSlider() {
     if (slides.length === 0) return null
 
     return (
-        <div className="relative h-[600px] md:h-[700px] w-full overflow-hidden bg-gray-900">
+        <div className="relative h-[500px] md:h-[700px] w-full overflow-hidden bg-gray-900">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={current}
@@ -91,15 +91,15 @@ export function HeroSlider() {
                             initial={{ y: 30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.3, duration: 0.8 }}
-                            className="max-w-4xl"
+                            className="max-w-4xl pt-10 md:pt-0"
                         >
-                            <span className="inline-block py-1 px-4 mb-6 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm font-bold tracking-widest uppercase">
+                            <span className="inline-block py-1 px-4 mb-4 md:mb-6 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs md:text-sm font-bold tracking-widest uppercase">
                                 Welcome to YDPPS
                             </span>
-                            <h1 className="text-5xl md:text-7xl font-bold font-serif mb-6 tracking-tight drop-shadow-md leading-tight">
+                            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 md:mb-6 tracking-tight drop-shadow-md leading-tight">
                                 {slides[current].title}
                             </h1>
-                            <p className="text-xl md:text-2xl mb-10 opacity-90 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
+                            <p className="text-base sm:text-lg md:text-2xl mb-8 md:mb-10 opacity-90 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-sm px-2">
                                 {slides[current].subtitle}
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
