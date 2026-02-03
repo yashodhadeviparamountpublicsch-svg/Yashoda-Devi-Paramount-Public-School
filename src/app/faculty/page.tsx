@@ -49,7 +49,7 @@ export default function FacultyPage() {
                 backgroundImage="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop"
             />
 
-            <section className="py-20">
+            <section className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
                     {loading ? (
                         <div className="flex justify-center py-12">
