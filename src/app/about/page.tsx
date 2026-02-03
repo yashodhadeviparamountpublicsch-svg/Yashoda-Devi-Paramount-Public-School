@@ -67,7 +67,7 @@ export default function AboutPage() {
                 backgroundImage={data.heroImage || defaultData.heroImage}
             />
 
-            <section className="py-20">
+            <section className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                         <div className="space-y-6">
@@ -118,7 +118,7 @@ export default function AboutPage() {
             </section>
 
             {/* Facilities */}
-            <section className="py-20">
+            <section className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold font-serif text-primary mb-12 text-center">Our Facilities</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
