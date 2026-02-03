@@ -11,10 +11,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 
-export const metadata = {
-    title: "Contact Us",
-    description: "Get in touch with Yashoda Devi Paramount Public School. Find our address, phone number, email, and location map.",
-};
 
 export default function ContactPage() {
     const [loading, setLoading] = useState(false)
