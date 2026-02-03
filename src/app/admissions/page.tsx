@@ -149,7 +149,7 @@ export default function AdmissionsPage() {
                 backgroundImage="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
             />
 
-            <section className="py-20">
+            <section className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold font-serif text-primary mb-12 text-center">Admission Process</h2>
 
