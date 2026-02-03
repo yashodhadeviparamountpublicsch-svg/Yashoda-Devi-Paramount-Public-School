@@ -32,6 +32,11 @@ const defaultData: AboutPageData = {
     missionContent: "To provide a stimulating learning environment, instilling values of integrity, discipline, and empathy, while ensuring academic proficiency and physical wellness."
 }
 
+export const metadata = {
+    title: "About Us",
+    description: "Learn about the history, vision, and mission of Yashoda Devi Paramount Public School. Meet our leadership and discover our facilities.",
+};
+
 export default function AboutPage() {
     const [data, setData] = useState<AboutPageData>(defaultData)
     const [loading, setLoading] = useState(true)
