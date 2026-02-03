@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const { signIn } = useAuth();
+    const { signIn, signInWithGoogle } = useAuth();
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -26,6 +26,20 @@ export default function AdminLoginPage() {
             router.push("/admin");
         } catch (err: any) {
             setError(err.message || "Failed to sign in. Please check your credentials.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        setError("");
+        setLoading(true);
+        try {
+            await signInWithGoogle();
+            router.push("/admin");
+        } catch (err: any) {
+            console.error("Google Sign-In Error:", err);
+            setError(err.message || "Failed to sign in with Google.");
         } finally {
             setLoading(false);
         }
@@ -73,7 +87,7 @@ export default function AdminLoginPage() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-4">
                         {error && (
                             <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg flex items-start gap-2">
                                 <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
@@ -81,50 +95,75 @@ export default function AdminLoginPage() {
                             </div>
                         )}
 
-                        <div className="space-y-2">
-                            <label htmlFor="email" className="text-sm font-medium">
-                                Email Address
-                            </label>
-                            <Input
-                                id="email"
-                                type="email"
-                                placeholder="admin@ydpps.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                disabled={loading}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="password" className="text-sm font-medium">
-                                Password
-                            </label>
-                            <Input
-                                id="password"
-                                type="password"
-                                placeholder="••••••••"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                                disabled={loading}
-                            />
-                        </div>
-
                         <Button
-                            type="submit"
-                            className="w-full text-base h-11"
+                            type="button"
+                            variant="outline"
+                            className="w-full h-11 flex items-center justify-center gap-2 text-base"
+                            onClick={handleGoogleSignIn}
                             disabled={loading}
                         >
-                            {loading ? "Signing in..." : "Sign In"}
+                            <svg className="h-5 w-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                                <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+                            </svg>
+                            Sign in with Google
                         </Button>
 
-                        <div className="relative my-4">
+                        <div className="relative">
                             <div className="absolute inset-0 flex items-center">
                                 <span className="w-full border-t" />
                             </div>
                             <div className="relative flex justify-center text-xs uppercase">
-                                <span className="bg-background px-2 text-muted-foreground">Or</span>
+                                <span className="bg-background px-2 text-muted-foreground">Or continue with email</span>
+                            </div>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div className="space-y-2">
+                                <label htmlFor="email" className="text-sm font-medium">
+                                    Email Address
+                                </label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="admin@ydpps.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    disabled={loading}
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label htmlFor="password" className="text-sm font-medium">
+                                    Password
+                                </label>
+                                <Input
+                                    id="password"
+                                    type="password"
+                                    placeholder="••••••••"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    disabled={loading}
+                                />
+                            </div>
+
+                            <Button
+                                type="submit"
+                                className="w-full text-base h-11"
+                                disabled={loading}
+                            >
+                                {loading ? "Signing in..." : "Sign In"}
+                            </Button>
+                        </form>
+
+                        {/* Hidden default admin creation for now, or keep it if needed at bottom */}
+                        {/* <div className="relative my-4">
+                            <div className="absolute inset-0 flex items-center">
+                                <span className="w-full border-t" />
+                            </div>
+                            <div className="relative flex justify-center text-xs uppercase">
+                                <span className="bg-background px-2 text-muted-foreground">Dev Tools</span>
                             </div>
                         </div>
 
@@ -136,8 +175,8 @@ export default function AdminLoginPage() {
                             disabled={loading}
                         >
                             Create Default Admin (Dev Only)
-                        </Button>
-                    </form>
+                        </Button> */}
+                    </div>
                 </CardContent>
             </Card>
         </div>
