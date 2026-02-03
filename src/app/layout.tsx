@@ -20,6 +20,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Yashoda Devi Paramount Public School",
   description: "A comprehensive digital platform for Yashoda Devi Paramount Public School, featuring admissions, gallery, and notices.",
+  verification: {
+    google: "slAqZ4QG5zpdsckz897NsmmKGSe3CWBNj9oIqgDdDHs",
+  },
 };
 
 export default function RootLayout({
