@@ -1,5 +1,10 @@
 import { PageHeader } from "@/components/common/PageHeader";
 
+export const metadata = {
+    title: "Academics",
+    description: "Explore the CBSE curriculum, co-curricular activities, and assessment patterns at YDPPS. From Pre-Primary to Secondary education.",
+};
+
 export default function AcademicsPage() {
     return (
         <div>
