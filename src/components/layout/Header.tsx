@@ -55,11 +55,11 @@ export function Header() {
         <header className={headerClass}>
             <div className="container mx-auto px-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className={cn("h-12 w-12 relative rounded-full overflow-hidden p-0.5 transition-colors", logoContainerClass)}>
+                    <div className={cn("h-10 w-10 md:h-12 md:w-12 relative rounded-full overflow-hidden p-0.5 transition-colors", logoContainerClass)}>
                         <img src={settings.logo || "/images/logo.jpg"} alt={`${settings.shortName} Logo`} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div className="flex flex-col">
-                        <span className={cn("font-serif font-bold text-xl leading-none transition-colors", isTransparent ? "text-white" : "text-primary")}>
+                        <span className={cn("font-serif font-bold text-lg md:text-xl leading-none transition-colors", isTransparent ? "text-white" : "text-primary")}>
                             {settings.schoolName.split(' ')[0]} {settings.schoolName.split(' ')[1] || ""}
                         </span>
                         <span className={cn("text-[10px] uppercase tracking-widest font-medium transition-colors hidden md:block", isTransparent ? "text-white/90" : "text-muted-foreground")}>
