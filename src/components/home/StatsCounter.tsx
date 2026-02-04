@@ -12,7 +12,7 @@ const stats = [
 
 function Counter({ from, to, duration }: { from: number; to: number; duration: number }) {
     const nodeRef = useRef<HTMLSpanElement>(null)
-    const inView = useInView(nodeRef, { once: true, margin: "-100px" })
+    const inView = useInView(nodeRef, { once: true, margin: "0px" })
 
     useEffect(() => {
         if (!inView) return
