@@ -115,16 +115,16 @@ export function FacultyPreview() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                     </div>
                                     <CardContent className="p-6 text-center relative bg-white/50 backdrop-blur-sm group-hover:bg-white/80 transition-colors">
-                                        <div className="absolute -top-10 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                        <div className="relative -mt-10 mb-4 flex justify-center transform transition-all duration-300">
                                             <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-xs font-bold text-primary uppercase tracking-wider">
                                                 {teacher.role}
                                             </div>
                                         </div>
 
                                         <h3 className="text-xl font-bold font-serif text-foreground mb-1 group-hover:text-primary transition-colors">{teacher.name}</h3>
-                                        <p className="text-muted-foreground text-sm font-medium mb-2 opacity-100 group-hover:opacity-0 transition-opacity absolute inset-x-0 bottom-4">{teacher.role}</p>
+                                        {/* Removed the localized absolute role which was causing issues, now using the pill above */}
 
-                                        <div className="pt-3 mt-3 border-t border-primary/10 opacity-60 group-hover:opacity-100 transition-opacity">
+                                        <div className="pt-3 mt-3 border-t border-primary/10 opacity-80 group-hover:opacity-100 transition-opacity">
                                             <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{teacher.qualification}</p>
                                         </div>
                                     </CardContent>
