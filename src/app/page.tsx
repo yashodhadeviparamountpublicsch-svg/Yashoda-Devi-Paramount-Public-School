@@ -13,6 +13,7 @@ import { PridePreview } from "@/components/home/PridePreview"
 import { CoachingPreview } from "@/components/home/CoachingPreview"
 import { motion } from "framer-motion"
 import { ScrollAnimation } from "@/components/common/ScrollAnimation"
+import { AdmissionForm } from "@/components/admissions/AdmissionForm"
 
 const highlights = [
   { icon: GraduationCap, title: "Nursery to Class 10", desc: "Complete schooling with CBSE aligned curriculum aiming for holistic excellence." },
@@ -153,6 +154,12 @@ export default function Home() {
       <ScrollAnimation delay={0.1}>
         <GalleryPreview />
       </ScrollAnimation>
+
+      <section className="py-12 md:py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <AdmissionForm />
+        </div>
+      </section>
 
       {/* Call to Action */}
       <ScrollAnimation>
