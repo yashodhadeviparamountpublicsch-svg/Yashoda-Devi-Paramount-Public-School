@@ -59,12 +59,10 @@ export function Header() {
                         <img src={settings.logo || "/images/logo.jpg"} alt={`${settings.shortName} Logo`} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div className="flex flex-col">
-                        <span className={cn("font-serif font-bold text-lg md:text-xl leading-none transition-colors", isTransparent ? "text-white" : "text-primary")}>
-                            {settings.schoolName.split(' ')[0]} {settings.schoolName.split(' ')[1] || ""}
+                        <span className={cn("font-serif font-bold text-sm md:text-xl leading-tight transition-colors", isTransparent ? "text-white" : "text-primary")}>
+                            {settings.schoolName}
                         </span>
-                        <span className={cn("text-[10px] uppercase tracking-widest font-medium transition-colors hidden md:block", isTransparent ? "text-white/90" : "text-muted-foreground")}>
-                            {settings.schoolName.split(' ').slice(2).join(' ') || settings.shortName}
-                        </span>
+                        {/* Removed the split logic to show full name always, adjusted text size for mobile */}
 
                     </div>
                 </Link>
